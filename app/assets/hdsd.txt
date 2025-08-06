@@ -1,2 +1,0 @@
-Chứa các file tài nguyên chưa được biên dịch như 
-pre-css(Less, Sass), image
