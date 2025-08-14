@@ -1,5 +1,7 @@
 <script setup lang="ts">
     import { NuxtLink } from '#components';
+    import FormPopup from '@/components/FormPopup.vue'
+    const showForm = ref(false)
 </script>
 
 <template>
@@ -18,7 +20,15 @@
                 <li><NuxtLink to="/webDesign">Thiết kế Website</NuxtLink></li>
                 <li><NuxtLink to="/appDesign">Thiết kế App</NuxtLink></li>
                 <li><NuxtLink to="/viewProjects">Dự án</NuxtLink></li>
-                <li><NuxtLink to="/advise" class="btn-advise">TƯ VẤN NGAY</NuxtLink></li>
+                 <li>
+                <button 
+                    @click="showForm = true" 
+                    class="btn-advise"
+                >
+                    TƯ VẤN NGAY
+                </button>
+                </li>
+                <FormPopup v-model:show="showForm" />
             </ul>
         </nav>
     </div>
