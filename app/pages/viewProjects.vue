@@ -2,7 +2,7 @@
     <div class="container">
         <div class="stats-grid">
             <div class="stat-card card-1">
-                <div class="icon">
+                 <div class="icon">
                     <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
@@ -78,7 +78,7 @@
         <div class="search-section">
             <div class="search-container">
                 <div class="search-icon-input">
-                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 24 24" fill="#666">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 24 24" fill="blue">
                         <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C8.01 14 6 11.99 6 9.5S8.01 5 10.5 5 15 7.01 15 9.5 12.99 14 10.5 14z"/>
                     </svg>
                     <input type="text" placeholder="Tìm kiếm dự án chất lượng" class="search-input">
@@ -97,12 +97,38 @@
                 </div>
 
                 <button class="search-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="18" width="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C8.01 14 6 11.99 6 9.5S8.01 5 10.5 5 15 7.01 15 9.5 12.99 14 10.5 14z"/>
-                    </svg>
                     Tìm kiếm dự án
                 </button>
             </div>
+        </div>
+
+        <!-- Project List -->
+        <div class="project-list-container">
+            <div class="project-item">
+                <img src="@/assets/images/testImg.png" alt="project image" class="project-image">
+                <div class="project-info">
+                    <h3 class="project-title">Acecook Việt Nam - Kết hợp hoàn hảo giữa truyền thống và hiện đại</h3>
+                    <p class="view-project-button">Chi tiết dự án ></p>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="@/assets/images/testImg.png" alt="project image" class="project-image">
+                <div class="project-info">
+                    <h3 class="project-title">Acecook Việt Nam - Kết hợp hoàn hảo giữa truyền thống và hiện đại</h3>
+                    <p class="view-project-button">Chi tiết dự án ></p>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="@/assets/images/testImg.png" alt="project image" class="project-image">
+                <div class="project-info">
+                    <h3 class="project-title">Acecook Việt Nam - Kết hợp hoàn hảo giữa truyền thống và hiện đại</h3>
+                    <p class="view-project-button">Chi tiết dự án ></p>
+                </div>
+            </div>
+
+            
+
+    
         </div>
     </div>
 
