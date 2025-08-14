@@ -6,15 +6,15 @@
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(15px, 2vw, 20px);
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(10px, 2vw, 15px);
   margin-bottom: clamp(30px, 5vw, 40px);
   max-width: 800px;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1200px) {
   .stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     max-width: none;
   }
 }
@@ -31,11 +31,13 @@
   transition: all 0.3s ease;
   cursor: pointer;
   min-height: clamp(90px, 8vw, 100px);
+  min-width: 0;
+  padding: 10px;
   position: relative;
 }
 
 .stat-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -60,8 +62,6 @@
 .stat-card .content h3 {
   font-weight: 700;
   margin-bottom: 4px;
-  text-align: left;
-
   text-align: center;
 }
 
@@ -236,7 +236,7 @@
 
 @media (max-width: 768px) {
   .project-list-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: clamp(10px, 3vw, 15px);
   }
 }
