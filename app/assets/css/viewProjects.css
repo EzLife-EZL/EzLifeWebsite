@@ -228,15 +228,17 @@
   margin-top: clamp(30px, 5vw, 40px);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 825px) {
   .project-list-container {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .project-title {
+    font-size: 16px;
   }
 }
 
 @media (max-width: 768px) {
   .project-list-container {
-    grid-template-columns: repeat(3, 1fr);
     gap: clamp(10px, 3vw, 15px);
   }
 }
@@ -249,32 +251,40 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: white;
+  cursor: pointer;
 }
 
 .project-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgba(58, 116, 224, 0.893);
+  .view-project-button {
+    text-decoration: underline;
+  }
 }
 
 .project-info {
   background-color: #ffff;
-  border-radius: 0 0 16px 16px;
-  padding: clamp(12px, 2.5vw, 20px);
+  border-radius: 16px;
+  padding: 0 0 16px 16px;
 }
 
 .project-item img {
   width: 100%;
-  height: clamp(160px, 20vw, 220px);
+  height: 100%;
   object-fit: cover;
   border-radius: 16px 16px 0 0;
 }
 
 .project-title {
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-size: 14px;
   margin-top: clamp(8px, 1.5vw, 12px);
   color: #333;
   line-height: 1.4;
   font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Số dòng muốn hiển thị */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .view-project-button {
@@ -286,10 +296,6 @@
   font-weight: 500;
   cursor: pointer;
   transition: color 0.3s ease;
-}
-
-.view-project-button:hover {
-  color: #ff6b9d;
 }
 
 @media (max-width: 768px) {
@@ -345,6 +351,51 @@
   }
 
   .project-title {
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: 14px;
   }
+}
+
+.view-more-projects-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 25px auto 0;
+  padding: 15px 50px;
+  color: white;
+  font-size: 16px;
+  background: linear-gradient(45deg, #f59738, #e3540c);
+  border-radius: 10px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1 / -1;
+  min-height: 200px;
 }

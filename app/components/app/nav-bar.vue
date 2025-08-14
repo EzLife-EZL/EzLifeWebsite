@@ -17,7 +17,7 @@
                 <li><NuxtLink to="/viewServices">Dịch vụ</NuxtLink></li>
                 <li><NuxtLink to="/webDesign">Thiết kế Website</NuxtLink></li>
                 <li><NuxtLink to="/appDesign">Thiết kế App</NuxtLink></li>
-                <li><NuxtLink to="/viewProjects">Dự án</NuxtLink></li>
+                <li><NuxtLink to="/projects/viewProjects">Dự án</NuxtLink></li>
                 <li><NuxtLink to="/advise" class="btn-advise">TƯ VẤN NGAY</NuxtLink></li>
             </ul>
         </nav>
