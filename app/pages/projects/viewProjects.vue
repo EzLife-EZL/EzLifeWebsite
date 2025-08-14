@@ -2,14 +2,14 @@
 type Project = {
   id: number;
   name: string;
-  image: string;
+  image?: string;
 };
 
 const {
   data: projects,
   error,
   pending,
-} = await useFetch<Project[]>("/api/projects", {
+} = await useFetch<Project[]>("/api/projects/projects", {
   lazy: true,
 });
 

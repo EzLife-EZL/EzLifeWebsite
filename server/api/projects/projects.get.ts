@@ -1,5 +1,5 @@
 export default defineEventHandler(async () => {
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     return [{
         id: 1,
@@ -8,6 +8,7 @@ export default defineEventHandler(async () => {
         status: 'Đang tiến hành',
         startDate: '2024-01-01',
         endDate: '2024-12-31',
+        image: 'https://mona.media/wp-content/uploads/2024/01/Wolfoo-4.png',
         teamMembers: ['Nguyễn Văn A', 'Trần Thị B'],
     }, {
         id: 2,
@@ -16,6 +17,7 @@ export default defineEventHandler(async () => {
         status: 'Hoàn thành',
         startDate: '2023-01-01',
         endDate: '2023-12-31',
+        image: 'https://mona.media/wp-content/uploads/2024/01/Wolfoo-4.png',
         teamMembers: ['Lê Văn C', 'Phạm Thị D'],
     }
         , {
@@ -25,6 +27,7 @@ export default defineEventHandler(async () => {
         status: 'Hoàn thành',
         startDate: '2023-01-01',
         endDate: '2023-12-31',
+        image: 'https://mona.media/wp-content/uploads/2024/01/Wolfoo-4.png',
         teamMembers: ['Lê Văn C', 'Phạm Thị D'],
     }
         , {
@@ -34,6 +37,7 @@ export default defineEventHandler(async () => {
         status: 'Hoàn thành',
         startDate: '2023-01-01',
         endDate: '2023-12-31',
+        image: 'https://mona.media/wp-content/uploads/2024/01/Wolfoo-4.png',
         teamMembers: ['Lê Văn C', 'Phạm Thị D'],
     }
         , {
@@ -43,6 +47,7 @@ export default defineEventHandler(async () => {
         status: 'Hoàn thành',
         startDate: '2023-01-01',
         endDate: '2023-12-31',
+        image: 'https://mona.media/wp-content/uploads/2024/01/Wolfoo-4.png',
         teamMembers: ['Lê Văn C', 'Phạm Thị D'],
     }
         , {
@@ -52,6 +57,7 @@ export default defineEventHandler(async () => {
         status: 'Hoàn thành',
         startDate: '2023-01-01',
         endDate: '2023-12-31',
+        image: 'https://mona.media/wp-content/uploads/2024/01/Wolfoo-4.png',
         teamMembers: ['Lê Văn C', 'Phạm Thị D'],
     }
     ]
