@@ -4,7 +4,7 @@ import { NuxtLink } from '#components';
 
 <template>
   <nav class="topbar">
-    <NuxtLink to="/user/home" class="logo">
+    <NuxtLink to="/user" class="logo">
       <img src="/Logo.png" alt="Logo" />
     </NuxtLink>
     <ul class="menu">
@@ -22,7 +22,7 @@ import { NuxtLink } from '#components';
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
+  background: transparent;
   padding: 0.5rem 2rem;
   min-height: 64px;
   box-shadow: 0 2px 8px #0001;
@@ -48,12 +48,18 @@ import { NuxtLink } from '#components';
   font-size: 0.85rem;
   color: #333;
 }
+
 .menu {
   display: flex;
   gap: 28px;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.menu a[data-v-f802542c] {
+  color: white;
+
 }
 .menu li {
   margin: 0 1rem;

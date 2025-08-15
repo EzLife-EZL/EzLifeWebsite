@@ -37,7 +37,8 @@ function onBoxClick(idx) {
     <section class="banner">
       <h1>EzLife</h1>
       <h2>Cung cấp giải pháp phần mềm</h2>
-      <div class="banner-slider">
+      <div style="display: flex; flex-direction: row; justify-content: center;  align-items: center; margin-bottom: 40%;">
+        <div class="banner-slider">
         <div
             v-for="(img, idx) in visibleImages"
             :key="idx + '-' + img"
@@ -47,6 +48,7 @@ function onBoxClick(idx) {
             >
             <img :src="img" alt="" />
         </div>
+      </div>
       </div>
       <div class="contact-btns">
         <a href="#" class="zalo-btn"></a>
@@ -149,7 +151,7 @@ function onBoxClick(idx) {
   text-align: center;
   padding: 2rem 1rem 1rem 1rem;
   color: #fff;
-}
+ }
 .banner h1 {
   font-size: 2.2rem;
   font-weight: bold;
@@ -166,13 +168,13 @@ function onBoxClick(idx) {
   justify-content: space-around;
   align-items: center;
   margin-bottom: 2em;
-  margin:0 5%;
-  gap: 3rem;
+  margin:0 2%;
+  gap: 2rem;
 }
 
 .banner-slider .box {
-  width: 440px;
-  height: 440px;
+  width: 340px;
+  height: 340px;
   background: #ccc;
   border-radius: 10px;
   opacity: 0.7;
@@ -185,8 +187,8 @@ function onBoxClick(idx) {
   overflow: hidden;
 }
 .banner-slider .boxside {
-  width: 280px;
-  height: 280px;
+  width: 180px;
+    height: 180px;
   background: #ccc;
   border-radius: 10px;
   opacity: 0.3;
@@ -201,7 +203,7 @@ function onBoxClick(idx) {
 
 .banner-slider .box img {
   width: 100%;
-  height: 100%;
+    height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -253,12 +255,16 @@ function onBoxClick(idx) {
 .messenger-btn { background: #fff url('/messenger.png') center/70% no-repeat; }
 
 .why {
-  background: #0a2c3d;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  background: #222222a0;
+  backdrop-filter: #2222228b blur(8px) ;
+
   color: #fff;
   padding: 3% 5% 3% 5%;
   border-radius: 20px;
-  max-width: 900px;
-  margin: 0 auto 2rem auto;
+  margin: 0 1rem 1rem 1rem;
   box-shadow: 0 4px 24px #0002;
 }
 .why p {
@@ -327,12 +333,10 @@ function onBoxClick(idx) {
 .card--right{ transform:  rotate(8deg) translateX( 30px); z-index: 2; }
 
 .benefits{
-  background:#066b7a;         /* teal như ảnh */
   color:#fff;
-  padding: 28px 16px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 0;           /* để full-bleed giống ảnh; chỉnh nếu muốn */
+    padding: 3% 5% 3% 5%;
+  margin: 0 1rem 1rem 1rem;
+  border-radius: 20px;
 }
 .benefits h3{
   text-align:center;
