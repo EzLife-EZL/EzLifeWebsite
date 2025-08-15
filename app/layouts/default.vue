@@ -10,7 +10,6 @@
 <style scoped>
 .navbar {
   background-color: #ffffff;
-  padding: 1rem;
   color: white;
 }
 main {

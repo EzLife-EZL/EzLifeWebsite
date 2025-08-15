@@ -22,7 +22,6 @@ onMounted(async () => {
 
 const labels = computed<string[]>(() => data.value?.months ?? [])
 
-// ====== Chart data (KHÔNG dùng stack để 3 cột đứng cạnh nhau) ======
 const webBar = computed<ChartData<'bar'>>(() => ({
   labels: labels.value,
   datasets: [
@@ -57,7 +56,6 @@ const revenueLine = computed<ChartData<'line'>>(() => ({
   ]
 }))
 
-// ====== Options: nhóm cột cạnh nhau + chiều cao ổn định ======
 const barOpts: ChartOptions<'bar'> = {
   responsive: true,
   maintainAspectRatio: false,
@@ -94,7 +92,6 @@ const lineOpts: ChartOptions<'line'> = {
   }
 }
 
-// ====== Bảng dữ liệu cho Web/App/WebApp ======
 const tableWeb = computed(() =>
   (data.value?.subs ?? []).map((m:any) => ({ month: m.month, ...m.web }))
 )
@@ -147,6 +144,7 @@ const tableWebApp = computed(() =>
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 24px;
+  color: #fff;
 }
 .dash-card {
   background: #fff;
