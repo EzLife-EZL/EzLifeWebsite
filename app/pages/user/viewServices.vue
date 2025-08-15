@@ -1,44 +1,44 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import ServiceCard from '~/pages/user/ServiceCard.vue'
-import PricingCard from '~/pages/user/PricingCard.vue'
-import smartphone from '@/assets/images/smartphone.png';
-import laptop from '@/assets/images/laptop.png';
-import appdevelopment from '@/assets/images/app-development.png';
+import { ref, onMounted } from "vue";
+import ServiceCard from "~/pages/user/ServiceCard.vue";
+import PricingCard from "~/pages/user/PricingCard.vue";
+import smartphone from "@/assets/images/smartphone.png";
+import laptop from "@/assets/images/laptop.png";
+import appdevelopment from "@/assets/images/app-development.png";
 
-const cards = ref([])
-let currentIndex = 0
-let total = 0
+const cards = ref([]);
+let currentIndex = 0;
+let total = 0;
 
 onMounted(() => {
-  cards.value = document.querySelectorAll('.services-carousel .service-card')
-  total = cards.value.length
-  updateCarousel()
+  cards.value = document.querySelectorAll(".services-carousel .service-card");
+  total = cards.value.length;
+  updateCarousel();
 
   setInterval(() => {
-    currentIndex = (currentIndex + 1) % total
-    updateCarousel()
-  }, 2000) 
-})
+    currentIndex = (currentIndex + 1) % total;
+    updateCarousel();
+  }, 2000);
+});
 
 function updateCarousel() {
   cards.value.forEach((card, i) => {
-    const diff = (i - currentIndex + total) % total
+    const diff = (i - currentIndex + total) % total;
     if (diff === 0) {
-      card.style.transform = `translateX(0) scale(1)`
-      card.style.opacity = 1
-      card.style.zIndex = 3
+      card.style.transform = `translateX(0) scale(1)`;
+      card.style.opacity = 1;
+      card.style.zIndex = 3;
     } else if (diff === 1 || diff === total - 1) {
-      const offset = diff === 1 ? 110 : -110
-      card.style.transform = `translateX(${offset}%) scale(0.8)`
-      card.style.opacity = 0.4
-      card.style.zIndex = 2
+      const offset = diff === 1 ? 110 : -110;
+      card.style.transform = `translateX(${offset}%) scale(0.8)`;
+      card.style.opacity = 0.4;
+      card.style.zIndex = 2;
     } else {
-      card.style.transform = `translateX(${diff * 110}%) scale(0.8)`
-      card.style.opacity = 0
-      card.style.zIndex = 1
+      card.style.transform = `translateX(${diff * 110}%) scale(0.8)`;
+      card.style.opacity = 0;
+      card.style.zIndex = 1;
     }
-  })
+  });
 }
 </script>
 
@@ -66,7 +66,7 @@ function updateCarousel() {
       />
     </div>
 
-    <h1 class="section-title">Bảng giá tham khảo</h1>
+    <h1 class="section-title-1">Bảng giá tham khảo</h1>
     <div class="pricing-grid">
       <PricingCard
         :icon="smartphone"
@@ -74,7 +74,7 @@ function updateCarousel() {
         :features="[
           'Bảo hành trọn đời',
           'Giảm giá nếu là sinh viên',
-          'Phí thuê duy trì = Phí cơ bản + 10%'
+          'Phí thuê duy trì = Phí cơ bản + 10%',
         ]"
         price="1tr500 - 2tr"
       />
@@ -84,7 +84,7 @@ function updateCarousel() {
         :features="[
           'Bảo hành trọn đời',
           'Giảm giá nếu là sinh viên',
-          'Phí thuê duy trì = Phí cơ bản + 15%'
+          'Phí thuê duy trì = Phí cơ bản + 15%',
         ]"
         price="3tr500 - 4tr"
       />
@@ -94,11 +94,10 @@ function updateCarousel() {
         :features="[
           'Bảo hành trọn đời',
           'Giảm giá nếu là sinh viên',
-          'Phí thuê duy trì = Phí cơ bản + 20%'
+          'Phí thuê duy trì = Phí cơ bản + 20%',
         ]"
         price="8tr - 12tr"
       />
     </div>
   </div>
 </template>
-

@@ -1,5 +1,7 @@
 <script setup>
-import { NuxtLink } from '#components';
+import { NuxtLink } from "#components";
+import FormPopup from "~/pages/user/FormPopup.vue";
+const showForm = ref(false);
 </script>
 
 <template>
@@ -14,17 +16,12 @@ import { NuxtLink } from '#components';
       <li><NuxtLink to="/user/viewProjects">Dự án</NuxtLink></li>
       <li><NuxtLink to="/">Liên hệ</NuxtLink></li>
       <li><NuxtLink to="/">Chính sách</NuxtLink></li>
-    
-     <li>
-                <button 
-                    @click="showForm = true" 
-                    class="btn-advise"
-                >
-                    TƯ VẤN NGAY
-                </button>
-                </li>
-                <FormPopup v-model:show="showForm" />
-                </ul>
+
+      <li>
+        <button @click="showForm = true" class="btn-advise">TƯ VẤN NGAY</button>
+      </li>
+      <FormPopup v-model:show="showForm" />
+    </ul>
   </nav>
 </template>
 
@@ -69,7 +66,7 @@ import { NuxtLink } from '#components';
 .menu li {
   margin: 0 1rem;
   font-size: 1.3rem;
-  font-weight:bold;
+  font-weight: bold;
 }
 .menu a {
   color: #222;

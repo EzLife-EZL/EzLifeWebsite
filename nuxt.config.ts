@@ -5,10 +5,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: [
     '@/assets/css/global.css',
+    '@/assets/css/home.css',
     '@/assets/css/nav-bar.css',
     '@/assets/css/viewServices.css',
     '@/assets/css/price.css',
-    '@/assets/css/detailpage.css'
+    '@/assets/css/detailpage.css',
+    '@/assets/css/viewProjects.css'
   ],
   app: {
     head: {
