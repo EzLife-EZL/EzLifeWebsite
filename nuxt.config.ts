@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     '@/assets/css/global.css',
     '@/assets/css/nav-bar.css',
     '@/assets/css/viewServices.css',
-    '@/assets/css/price.css'
+    '@/assets/css/price.css',
+    '@/assets/css/detailpage.css'
   ],
   app: {
     head: {
@@ -27,6 +28,4 @@ export default defineNuxtConfig({
       ],
     },
   },
-
-
 })

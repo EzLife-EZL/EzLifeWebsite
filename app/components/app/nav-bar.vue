@@ -19,7 +19,7 @@
                 <li><NuxtLink to="/viewServices">Dịch vụ</NuxtLink></li>
                 <li><NuxtLink to="/webDesign">Thiết kế Website</NuxtLink></li>
                 <li><NuxtLink to="/appDesign">Thiết kế App</NuxtLink></li>
-                <li><NuxtLink to="/viewProjects">Dự án</NuxtLink></li>
+                <li><NuxtLink to="/detailProjects">Đánh giá</NuxtLink></li>
                  <li>
                 <button 
                     @click="showForm = true" 
