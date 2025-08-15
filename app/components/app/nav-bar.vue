@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { NuxtLink } from '#components';
-    import FormPopup from '@/components/FormPopup.vue'
+    import FormPopup from '~/pages/user/FormPopup.vue'
     const showForm = ref(false)
 </script>
 
