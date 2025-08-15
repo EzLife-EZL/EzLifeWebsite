@@ -17,8 +17,6 @@
             <ul class="nav-links">
                 <li><NuxtLink to="/about">Giới thiệu</NuxtLink></li>
                 <li><NuxtLink to="/viewServices">Dịch vụ</NuxtLink></li>
-                <li><NuxtLink to="/webDesign">Thiết kế Website</NuxtLink></li>
-                <li><NuxtLink to="/appDesign">Thiết kế App</NuxtLink></li>
                 <li><NuxtLink to="/detailProjects">Đánh giá</NuxtLink></li>
                  <li>
                 <button 

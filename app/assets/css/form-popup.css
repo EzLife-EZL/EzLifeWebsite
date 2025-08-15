@@ -53,11 +53,10 @@
   position: relative;
 }
 
-/* Nút đóng */
 .close-btn {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 0px;
+  right: 0px;
   background: transparent;
   border: none;
   font-size: 18px;
@@ -67,9 +66,9 @@
 
 .close-btn:hover {
   color: black;
+  background-color: #FF0033;
 }
 
-/* Input, select, textarea */
 .form-fields input,
 .form-fields select,
 .form-fields textarea {
