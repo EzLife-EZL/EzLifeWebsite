@@ -5,8 +5,8 @@ export default defineNuxtConfig({
   css: [
     '@/assets/css/global.css',
     '@/assets/css/nav-bar.css',
-    '@/assets/css/viewProjects.css',
-    '@/assets/css/viewServices.css'
+    '@/assets/css/viewServices.css',
+    '@/assets/css/price.css'
   ],
   app: {
     head: {
