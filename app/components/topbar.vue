@@ -1,21 +1,31 @@
 <script setup>
-import { NuxtLink } from '#components';
+import { NuxtLink } from "#components";
+import FormPopup from "~/pages/user/FormPopup.vue";
+const showForm = ref(false);
 </script>
 
 <template>
   <nav class="topbar">
-    <NuxtLink to="/user" class="logo">
-      <img src="/Logo.png" alt="Logo" />
+    <NuxtLink to="/user/home" class="logo">
+      <img src="/Logowhite.png" alt="Logo" />
     </NuxtLink>
     <ul class="menu">
       <li><NuxtLink to="/user/home">Giới thiệu</NuxtLink></li>
-      <li><NuxtLink to="/">Dịch vụ</NuxtLink></li>
-      <li><NuxtLink to="/">Liên hệ</NuxtLink></li>
+      <li><NuxtLink to="/user/viewServices">Dịch vụ</NuxtLink></li>
+      <li><NuxtLink to="/user/detailProjects">Đánh giá</NuxtLink></li>
+      <li><NuxtLink to="/user/viewProjects">Dự án</NuxtLink></li>
+      <li><NuxtLink to="/user/contact">Liên hệ</NuxtLink></li>
       <li><NuxtLink to="/">Chính sách</NuxtLink></li>
+      <li><NuxtLink to="/admin/login"> Admin</NuxtLink></li>
+
+      <li>
+        <button @click="showForm = true" class="btn-advise">TƯ VẤN NGAY</button>
+      </li>
+      <FormPopup v-model:show="showForm" />
     </ul>
-    <button class="advice-btn">Tư vấn ngay</button>
   </nav>
 </template>
+
 
 <style scoped>
 .topbar {

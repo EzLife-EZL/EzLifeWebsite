@@ -19,7 +19,8 @@ import Topbar from '~/components/topbar.vue';
     min-height:100vh;
     max-width: 300vh;
     display:flex;
-    flex-direction:column}
+    flex-direction:column
+  }
 .page-body {
   flex: 1;
   background:
@@ -36,10 +37,13 @@ import Topbar from '~/components/topbar.vue';
       #6fe5ff 66%,
       #0b1f48
     );
-  background-size: cover, 2100px, cover;
+    
+  background-size: cover, 100%, cover;
   background-repeat: no-repeat, no-repeat, no-repeat;
   min-height: 100vh;
   font-family: 'Inter', Arial, sans-serif;
 }
 
+
 </style>
+
