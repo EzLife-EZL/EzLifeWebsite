@@ -37,7 +37,8 @@ function onBoxClick(idx) {
     <section class="banner">
       <h1>EzLife</h1>
       <h2>Cung cấp giải pháp phần mềm</h2>
-      <div class="banner-slider">
+      <div style="display: flex; flex-direction: row; justify-content: center;  align-items: center; margin-bottom: 10%;">
+        <div class="banner-slider">
         <div
             v-for="(img, idx) in visibleImages"
             :key="idx + '-' + img"
@@ -47,6 +48,7 @@ function onBoxClick(idx) {
             >
             <img :src="img" alt="" />
         </div>
+      </div>
       </div>
       <div class="contact-btns">
         <a href="#" class="zalo-btn"></a>
@@ -74,7 +76,7 @@ function onBoxClick(idx) {
 
     <!-- Lợi ích -->
     <section class="benefits">
-    <h3>LỢI ÍCH CỦA <span>WEBAPP CHUYÊN NGHIỆP</span></h3>
+    <h3>LỢI ÍCH CỦA <span>WEB/APP CHUYÊN NGHIỆP</span></h3>
 
     <div class="benefit-list">
         <article class="benefit-card card--seo">

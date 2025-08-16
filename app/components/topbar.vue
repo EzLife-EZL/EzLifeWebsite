@@ -7,7 +7,7 @@ const showForm = ref(false);
 <template>
   <nav class="topbar">
     <NuxtLink to="/user/home" class="logo">
-      <img src="/Logo.png" alt="Logo" />
+      <img src="/Logowhite.png" alt="Logo" />
     </NuxtLink>
     <ul class="menu">
       <li><NuxtLink to="/user/home">Giới thiệu</NuxtLink></li>
@@ -26,12 +26,13 @@ const showForm = ref(false);
   </nav>
 </template>
 
+
 <style scoped>
 .topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
+  background: transparent;
   padding: 0.5rem 2rem;
   min-height: 64px;
   box-shadow: 0 2px 8px #0001;
@@ -57,6 +58,7 @@ const showForm = ref(false);
   font-size: 0.85rem;
   color: #333;
 }
+
 .menu {
   display: flex;
   gap: 28px;
@@ -64,10 +66,15 @@ const showForm = ref(false);
   margin: 0;
   padding: 0;
 }
+
+.menu a[data-v-f802542c] {
+  color: white;
+
+}
 .menu li {
   margin: 0 1rem;
   font-size: 1.3rem;
-  font-weight: bold;
+  font-weight:bold;
 }
 .menu a {
   color: #222;

@@ -15,7 +15,7 @@
   text-align: center;
   padding: 2rem 1rem 1rem 1rem;
   color: #fff;
-}
+ }
 .banner h1 {
   font-size: 2.2rem;
   font-weight: bold;
@@ -32,13 +32,13 @@
   justify-content: space-around;
   align-items: center;
   margin-bottom: 2em;
-  margin:0 5%;
-  gap: 3rem;
+  margin:0 2%;
+  gap: 2rem;
 }
 
 .banner-slider .box {
-  width: 440px;
-  height: 440px;
+  width: 340px;
+  height: 340px;
   background: #ccc;
   border-radius: 10px;
   opacity: 0.7;
@@ -51,8 +51,8 @@
   overflow: hidden;
 }
 .banner-slider .boxside {
-  width: 280px;
-  height: 280px;
+  width: 180px;
+    height: 180px;
   background: #ccc;
   border-radius: 10px;
   opacity: 0.3;
@@ -67,7 +67,7 @@
 
 .banner-slider .box img {
   width: 100%;
-  height: 100%;
+    height: 100%;
   object-fit: cover;
   display: block;
 }
@@ -119,12 +119,16 @@
 .messenger-btn { background: #fff url('/messenger.png') center/70% no-repeat; }
 
 .why {
-  background: #0a2c3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: #222222a0;
+  backdrop-filter: #2222228b blur(8px) ;
+
   color: #fff;
   padding: 3% 5% 3% 5%;
   border-radius: 20px;
-  max-width: 900px;
-  margin: 0 auto 2rem auto;
+  margin: 10%;
   box-shadow: 0 4px 24px #0002;
 }
 .why p {
@@ -140,6 +144,7 @@
 }
 .why .rowwhy {
   display: flex;
+  flex: 1;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -183,30 +188,51 @@
 
 .card{
   width: 150px; height: 200px;
-  border-radius: 16px; background: #fff;
+  margin: 10%;
+  border-radius: 16px; background: url('/a1.png') center/cover no-repeat;
   box-shadow: 0 8px 20px rgba(0,0,0,.2);
   transition: transform .2s ease;
 }
 
 /* Lệch và xoay nhẹ để thấy overlap */
-.card--left{  transform: rotate(-8deg) translateX(-30px); z-index: 1; }
-.card--right{ transform:  rotate(8deg) translateX( 30px); z-index: 2; }
+.card--left{ 
+   transform: rotate(-8deg) translateX(-30px); z-index: 1; 
+  }
+
+.card--right{ 
+  transform:  rotate(8deg) translateX( 30px); z-index: 2; 
+}
+
 
 .benefits{
-  background:#066b7a;         /* teal như ảnh */
-  color:#fff;
-  padding: 28px 16px 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 0;           /* để full-bleed giống ảnh; chỉnh nếu muốn */
+  flex: 1;
+  align-self: center;
+  justify-self: center;
+  color:#ffffff;
+    padding: 3% 5% 3% 5%;
+  margin: 0 1rem 1rem 1rem;
+  border-radius: 20px;
 }
 .benefits h3{
   text-align:center;
+  font-style: oblique;
   margin: 0 0 18px;
   letter-spacing:.6px;
   font-weight: 800;
 }
-.benefits h3 span{ color:#6fe5ff; }
+.benefits h3 span{
+  background: linear-gradient(270deg, #ff0000, #00ff1e, #006eff, #7c00a6);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 4s ease-in-out infinite;
+}
+
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 /* Lưới chính giống ảnh: thẻ SEO cao 2 hàng bên trái */
 .benefit-list{
@@ -223,7 +249,7 @@
 }
 
 /* Map area cho từng card */
-.card--seo      { grid-area: seo; }
+.card--seo      { grid-area: seo;  grid-row: span 2; padding: 20px;}
 .card--speed    { grid-area: speed; }
 .card--features { grid-area: features; }
 .card--security { grid-area: security; }
@@ -243,6 +269,11 @@
   align-content:start;
   gap: 8px;
 }
+.benefit-card:hover{
+  transform: translateY(-4px) scaleX(1.02) scaleY(1.02);
+  box-shadow: 0 16px 32px rgba(0,0,0,.2);
+  background-color: #00ffff;
+}
 .benefit-card h4{
   margin: 0;
   font-size: 20px;
@@ -255,7 +286,6 @@
 }
 
 /* Thẻ SEO cao 2 hàng + icon lớn */
-.card--seo{ grid-row: span 2; padding: 20px; }
 .benefit-icon{
   width: 72px; height: 72px; object-fit: contain; margin-bottom: 6px;
 }
