@@ -2,6 +2,7 @@
 import { NuxtLink } from "#components";
 import FormPopup from "~/pages/user/FormPopup.vue";
 const showForm = ref(false);
+const isMenuOpen = ref(false);
 </script>
 
 <template>
@@ -9,12 +10,11 @@ const showForm = ref(false);
     <NuxtLink to="/user/home" class="logo">
       <img src="/Logowhite.png" alt="Logo" />
     </NuxtLink>
-    <ul class="menu">
+    <button class="menu-toggle" @click="isMenuOpen = !isMenuOpen">☰</button>
+    <ul class="menu" :class="{ open: isMenuOpen }">
       <li><NuxtLink to="/user/home">Giới thiệu</NuxtLink></li>
       <li><NuxtLink to="/user/viewServices">Dịch vụ</NuxtLink></li>
-      <li><NuxtLink to="/user/detailProjects">Đánh giá</NuxtLink></li>
       <li><NuxtLink to="/user/viewProjects">Dự án</NuxtLink></li>
-      <li><NuxtLink to="/user/contact">Liên hệ</NuxtLink></li>
       <li><NuxtLink to="/">Chính sách</NuxtLink></li>
       <li><NuxtLink to="/admin/login"> Admin</NuxtLink></li>
 
@@ -25,7 +25,6 @@ const showForm = ref(false);
     </ul>
   </nav>
 </template>
-
 
 <style scoped>
 .topbar {
@@ -68,13 +67,12 @@ const showForm = ref(false);
 }
 
 .menu a[data-v-f802542c] {
-  color: white;
-
+  color: #ccffff;
 }
 .menu li {
   margin: 0 1rem;
   font-size: 1.3rem;
-  font-weight:bold;
+  font-weight: bold;
 }
 .menu a {
   color: #222;
@@ -84,7 +82,8 @@ const showForm = ref(false);
 .menu a:hover {
   color: #009ee3;
 }
-.advice-btn {
+
+.btn-advise {
   background: #009ee3;
   color: #fff;
   border: none;
@@ -94,7 +93,42 @@ const showForm = ref(false);
   cursor: pointer;
   transition: background 0.2s;
 }
-.advice-btn:hover {
+.btn-advise:hover {
   background: #007bbd;
+}
+/* Nút menu mobile */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    right: 0;
+    width: 220px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    z-index: 1000;
+  }
+
+  .menu.open {
+    display: flex;
+  }
+
+  .menu li {
+    margin: 0.8rem 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
 }
 </style>

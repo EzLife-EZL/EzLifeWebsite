@@ -101,3 +101,150 @@ function updateCarousel() {
     </div>
   </div>
 </template>
+
+<style>
+.bg-cyan-700 {
+  background: #009ee3;
+  min-height: 100vh;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-white {
+  color: #fff;
+}
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+.font-bold {
+  font-weight: bold;
+}
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.services-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.service-card {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 0.4;
+  transform: scale(0.9);
+}
+
+.service-card.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Service Card */
+.card {
+  width: 320px;
+  max-width: 90vw;
+  min-width: 260px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  padding: 24px;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.18);
+}
+
+.card__icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin: 0 auto 16px;
+  filter: drop-shadow(0 2px 0 rgba(13, 128, 145, 0.15));
+}
+
+.card__title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #009ee3;
+  margin-bottom: 10px;
+  letter-spacing: 0.2px;
+}
+
+.card__desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+}
+.services-page {
+  background: #009ee3;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+.services-title,
+.section-title {
+  text-align: center;
+  color: #fff;
+  font-size: 36px;
+  font-weight: 800;
+  padding: 2.5rem 0;
+}
+.section-title-1 {
+  color: #fff;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  padding: 2.5rem 0;
+}
+.services-carousel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 380px;
+}
+
+.services-wrap {
+  background: #009ee3;
+  padding: 2.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  position: absolute;
+  width: 320px;
+  max-width: 90vw;
+  height: 300px;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.pricing-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .services-title,
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .service-card {
+    width: 90%;
+  }
+}
+</style>
