@@ -10,9 +10,9 @@
         <NuxtLink to="/admin/statistic" active-class="active"
           >Thống kê</NuxtLink
         >
-        <NuxtLink to="/admin/orders" active-class="active"
-          >Đơn đặt hàng</NuxtLink
-        >
+        <NuxtLink to="/admin/orders" active-class="active">
+          Đơn đặt hàng
+        </NuxtLink>
         <NuxtLink to="/admin/customers" active-class="active"
           >Khách hàng</NuxtLink
         >
