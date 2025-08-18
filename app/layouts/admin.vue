@@ -13,9 +13,6 @@
         <NuxtLink to="/admin/orders" active-class="active">
           Đơn đặt hàng
         </NuxtLink>
-        <NuxtLink to="/admin/customers" active-class="active"
-          >Khách hàng</NuxtLink
-        >
         <NuxtLink to="/admin/messages" active-class="active">Nhắn tin</NuxtLink>
       </nav>
     </aside>

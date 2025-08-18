@@ -1,4 +1,3 @@
-/* Overlay nền tối */
 .form-overlay {
   position: fixed;
   inset: 0;
@@ -9,7 +8,6 @@
   z-index: 999;
 }
 
-/* Hộp thoại form */
 .form-container {
   background-color: #00838f;
   border-radius: 10px;
@@ -17,10 +15,9 @@
   overflow: hidden;
   width: 750px;
   max-width: 95%;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Bên trái - thông tin giới thiệu */
 .form-info {
   color: white;
   padding: 30px;
@@ -38,7 +35,7 @@
 }
 
 .form-info a {
-  color: #00FAFF;
+  color: #00faff;
   text-decoration: none;
 }
 
@@ -66,7 +63,7 @@
 
 .close-btn:hover {
   color: black;
-  background-color: #FF0033;
+  background-color: #ff0033;
 }
 
 .form-fields input,
@@ -85,10 +82,9 @@
   min-height: 80px;
 }
 
-/* Nút gửi */
 .submit-btn {
-  background-color: #00799B;
-  color: #00FAFF;
+  background-color: #00799b;
+  color: #00faff;
   padding: 10px 15px;
   border: none;
   border-radius: 6px;
@@ -97,10 +93,9 @@
 }
 
 .submit-btn:hover {
-  background-color: #FF0033;
+  background-color: #ff0033;
 }
 
-/* Checkbox */
 .checkbox-container {
   display: flex;
   align-items: center;
@@ -109,22 +104,22 @@
 }
 
 .text-title {
-  color: #00e5ff; 
+  color: #00e5ff;
 }
 .text-title:hover {
-  color: #FFCC66; 
+  color: #ffcc66;
 }
 
 .zalo-image {
   width: 50px;
   margin: 20px;
 }
-.messenger-image{
+.messenger-image {
   width: 50px;
   margin: 20px;
 }
 
-.call-image{
+.call-image {
   width: 50px;
-  margin:20px;
+  margin: 20px;
 }

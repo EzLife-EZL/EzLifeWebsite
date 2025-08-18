@@ -12,9 +12,7 @@ const showForm = ref(false);
     <ul class="menu">
       <li><NuxtLink to="/user/home">Giới thiệu</NuxtLink></li>
       <li><NuxtLink to="/user/viewServices">Dịch vụ</NuxtLink></li>
-      <li><NuxtLink to="/user/detailProjects">Đánh giá</NuxtLink></li>
       <li><NuxtLink to="/user/viewProjects">Dự án</NuxtLink></li>
-      <li><NuxtLink to="/user/contact">Liên hệ</NuxtLink></li>
       <li><NuxtLink to="/">Chính sách</NuxtLink></li>
       <li><NuxtLink to="/admin/login"> Admin</NuxtLink></li>
 
@@ -25,7 +23,6 @@ const showForm = ref(false);
     </ul>
   </nav>
 </template>
-
 
 <style scoped>
 .topbar {
@@ -69,12 +66,11 @@ const showForm = ref(false);
 
 .menu a[data-v-f802542c] {
   color: white;
-
 }
 .menu li {
   margin: 0 1rem;
   font-size: 1.3rem;
-  font-weight:bold;
+  font-weight: bold;
 }
 .menu a {
   color: #222;
