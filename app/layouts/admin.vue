@@ -7,7 +7,16 @@
       <nav class="menu">
         <NuxtLink to="/admin" exact-active-class="active">Dashboard</NuxtLink>
         <NuxtLink to="/admin/users" active-class="active">Users</NuxtLink>
-        <NuxtLink to="/admin/settings" active-class="active">Settings</NuxtLink>
+        <NuxtLink to="/admin/statistic" active-class="active"
+          >Thống kê</NuxtLink
+        >
+        <NuxtLink to="/admin/orders" active-class="active"
+          >Đơn đặt hàng</NuxtLink
+        >
+        <NuxtLink to="/admin/customers" active-class="active"
+          >Khách hàng</NuxtLink
+        >
+        <NuxtLink to="/admin/messages" active-class="active">Nhắn tin</NuxtLink>
       </nav>
     </aside>
 
