@@ -163,12 +163,7 @@ const viewMoreProjects = () => {
         <p>Không có dự án nào.</p>
       </div>
 
-      <div
-        v-for="project in projects"
-        :key="project.id"
-        class="project-item"
-        @click="viewProjectDetail(project.id)"
-      >
+      <div v-for="project in projects" :key="project.id" class="project-item">
         <img
           :src="
             project.image ||
