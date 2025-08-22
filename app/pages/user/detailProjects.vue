@@ -63,7 +63,9 @@ const newRating = ref(0);
         />
         <button class="nav-btn right" @click="nextImage">❯</button>
       </div>
-      <h1>{{ project.name }}</h1>
+      <h1 style="color: white">
+        {{ project.name }}
+      </h1>
       <p class="desc">{{ project.description }}</p>
       <div class="tech">
         <span v-for="t in project.tech" :key="t" class="tech-item">{{
@@ -76,7 +78,9 @@ const newRating = ref(0);
       </div>
     </section>
     <section class="reviews">
-      <h2>Đánh giá của khách hàng</h2>
+      <h2 style="color: blanchedalmond; margin-bottom: 20px">
+        Đánh giá của khách hàng
+      </h2>
       <div class="reviews-container">
         <div class="reviews-wrap">
           <div class="review-card" v-for="(r, i) in reviews" :key="i">
@@ -129,13 +133,14 @@ const newRating = ref(0);
 <style>
 .detail-project {
   padding: 3rem 5%;
-  background-color: #009ee3;
+  background-image: url("/backgroud_detail.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .project-info {
   text-align: center;
   margin-bottom: 3rem;
-  background-color: #009ee3;
 }
 
 .image-slider {
@@ -177,7 +182,7 @@ const newRating = ref(0);
 .desc {
   margin: 1rem 0;
   line-height: 1.6;
-  color: #333;
+  color: white;
 }
 
 .tech {

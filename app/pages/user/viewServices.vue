@@ -185,9 +185,9 @@ function updateCarousel() {
   color: #444;
 }
 .services-page {
-  background: #009ee3;
   min-height: 100vh;
   padding-bottom: 2rem;
+  background-image: url("/background_service.jpg");
 }
 
 .services-title,
