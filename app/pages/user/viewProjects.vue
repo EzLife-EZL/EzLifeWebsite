@@ -13,8 +13,8 @@ const {
   lazy: true,
 });
 
-const viewProjectDetail = () => {
-  navigateTo("/user/detailProjects");
+const viewProjectDetail = (id: number) => {
+  navigateTo("/user/" + id);
 };
 
 const viewMoreProjects = () => {
@@ -163,7 +163,12 @@ const viewMoreProjects = () => {
         <p>Không có dự án nào.</p>
       </div>
 
-      <div v-for="project in projects" :key="project.id" class="project-item">
+      <div
+        v-for="project in projects"
+        :key="project.id"
+        class="project-item"
+        @click="viewProjectDetail(project.id)"
+      >
         <img
           :src="
             project.image ||
@@ -412,6 +417,10 @@ const viewMoreProjects = () => {
 }
 
 /* Projects Section */
+
+.project-info {
+  padding: 10px 5px 10px 10px;
+}
 
 .project-list-container {
   display: grid;
