@@ -348,7 +348,7 @@ const relatedProjects = ref([
         </div>
 
         <div class="right-projectDesc">
-          <img src="/mockup5.png" alt="" />
+          <img src="/mockup7.png" alt="" />
         </div>
       </div>
 
@@ -467,29 +467,31 @@ const relatedProjects = ref([
 
 /* PROJECT SHOWCASE - UNIFORM DEVICE GRID */
 .section-title-1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 700;
-  margin: 30px;
+  margin: clamp(20px, 4vw, 30px);
+  color: rebeccapurple;
+  text-align: center;
 }
 
 .projectShowcase {
   background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
-  padding: 50px 20px;
-  margin: 60px 0;
-  border-radius: 20px;
+  padding: clamp(30px, 5vw, 50px) clamp(15px, 3vw, 20px);
+  margin: clamp(40px, 6vw, 60px) 0;
+  border-radius: clamp(12px, 2vw, 20px);
   position: relative;
-  min-height: 600px;
+  min-height: clamp(400px, 50vw, 600px);
   overflow: hidden;
 }
 
 .showcase-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(20px, 4vw, 40px);
   max-width: 1400px;
   margin: 0 auto;
   perspective: 1200px;
-  padding: 20px;
+  padding: clamp(10px, 2vw, 20px);
 }
 
 /* UNIFORM DEVICE SIZING */
@@ -499,6 +501,7 @@ const relatedProjects = ref([
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   will-change: transform;
   margin: 0 auto;
+  max-width: 100%;
 }
 
 /* Tablet Landscape - Wide format */
@@ -563,10 +566,6 @@ const relatedProjects = ref([
 }
 
 /* HOVER EFFECTS */
-.device-mockup:hover {
-  transform: translateY(-15px) rotateX(8deg) rotateY(8deg) scale(1.05) !important;
-  z-index: 10;
-}
 
 .device-mockup:hover .device-frame {
   box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.4),
@@ -577,7 +576,141 @@ const relatedProjects = ref([
   transform: scale(1.02);
 }
 
-/* FLOATING ANIMATIONS - Uniform movement */
+/* Desktop & Large Tablets */
+@media (min-width: 1200px) {
+  .device-mockup.tablet.landscape {
+    width: 320px;
+    height: 200px;
+    transform: rotateY(-8deg) rotateX(3deg);
+  }
+
+  .device-mockup.tablet.portrait {
+    width: 240px;
+    height: 320px;
+    transform: rotateY(8deg) rotateX(-3deg);
+  }
+
+  .device-mockup.mobile.portrait {
+    width: 180px;
+    height: 320px;
+    transform: rotateY(-5deg) rotateX(5deg);
+  }
+}
+
+/* Medium Screens */
+@media (min-width: 900px) and (max-width: 1199px) {
+  .device-mockup.tablet.landscape {
+    width: 280px;
+    height: 175px;
+    transform: rotateY(-6deg) rotateX(2deg);
+  }
+
+  .device-mockup.tablet.portrait {
+    width: 200px;
+    height: 280px;
+    transform: rotateY(6deg) rotateX(-2deg);
+  }
+
+  .device-mockup.mobile.portrait {
+    width: 160px;
+    height: 280px;
+    transform: rotateY(-4deg) rotateX(4deg);
+  }
+}
+
+/* Small Tablets */
+@media (min-width: 600px) and (max-width: 899px) {
+  .device-mockup.tablet.landscape {
+    width: 240px;
+    height: 150px;
+    transform: rotateY(-4deg) rotateX(1deg);
+  }
+
+  .device-mockup.tablet.portrait {
+    width: 170px;
+    height: 240px;
+    transform: rotateY(4deg) rotateX(-1deg);
+  }
+
+  .device-mockup.mobile.portrait {
+    width: 140px;
+    height: 240px;
+    transform: rotateY(-3deg) rotateX(3deg);
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 599px) {
+  .device-mockup.tablet.landscape,
+  .device-mockup.tablet.portrait,
+  .device-mockup.mobile.portrait {
+    width: min(280px, 90vw);
+    height: min(200px, 60vw);
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+
+  /* Make all devices uniform on mobile for better consistency */
+  .device-mockup.tablet.portrait,
+  .device-mockup.mobile.portrait {
+    height: min(280px, 75vw);
+  }
+}
+
+/* DEVICE FRAMES - Responsive */
+.device-frame {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: clamp(12px, 2vw, 20px);
+  padding: clamp(4px, 1vw, 8px);
+  box-shadow: 0 clamp(10px, 3vw, 20px) clamp(20px, 5vw, 40px) -10px rgba(0, 0, 0, 0.3),
+    0 0 0 2px rgba(255, 255, 255, 0.1),
+    0 clamp(4px, 1.5vw, 8px) clamp(12px, 3vw, 25px) rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.device-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 2;
+  border-radius: clamp(8px, 1.5vw, 12px);
+}
+
+.device-frame img {
+  width: 100%;
+  height: 100%;
+  border-radius: clamp(8px, 1.5vw, 12px);
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* HOVER EFFECTS - Responsive */
+@media (hover: hover) and (pointer: fine) {
+  .device-mockup:hover .device-frame {
+    box-shadow: 0 clamp(15px, 4vw, 30px) clamp(30px, 6vw, 60px) -10px rgba(0, 0, 0, 0.4),
+      0 0 0 2px rgba(255, 255, 255, 0.2),
+      0 clamp(8px, 2vw, 15px) clamp(18px, 4vw, 35px) rgba(0, 0, 0, 0.25);
+  }
+
+  .device-mockup:hover .device-frame img {
+    transform: scale(1.02);
+  }
+}
+
+/* FLOATING ANIMATIONS - Reduced on mobile */
 @keyframes floatPattern1 {
   0% {
     transform: translateY(0px) rotate(0deg);
@@ -629,50 +762,76 @@ const relatedProjects = ref([
   }
 }
 
-/* Apply animations with staggered delays */
-.device-mockup:nth-child(1) {
-  animation: floatPattern1 7s ease-in-out infinite;
-  animation-delay: 0s;
-}
-.device-mockup:nth-child(2) {
-  animation: floatPattern2 7s ease-in-out infinite;
-  animation-delay: 1s;
-}
-.device-mockup:nth-child(3) {
-  animation: floatPattern3 7s ease-in-out infinite;
-  animation-delay: 2s;
-}
-.device-mockup:nth-child(4) {
-  animation: floatPattern1 7s ease-in-out infinite;
-  animation-delay: 3s;
-}
-.device-mockup:nth-child(5) {
-  animation: floatPattern2 7s ease-in-out infinite;
-  animation-delay: 4s;
-}
-.device-mockup:nth-child(6) {
-  animation: floatPattern3 7s ease-in-out infinite;
-  animation-delay: 5s;
-}
-.device-mockup:nth-child(7) {
-  animation: floatPattern1 7s ease-in-out infinite;
-  animation-delay: 6s;
-}
-.device-mockup:nth-child(8) {
-  animation: floatPattern2 7s ease-in-out infinite;
-  animation-delay: 0.5s;
+/* Reduced animation on smaller screens */
+@media (min-width: 768px) {
+  .device-mockup:nth-child(1) {
+    animation: floatPattern1 7s ease-in-out infinite;
+    animation-delay: 0s;
+  }
+  .device-mockup:nth-child(2) {
+    animation: floatPattern2 7s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+  .device-mockup:nth-child(3) {
+    animation: floatPattern3 7s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  .device-mockup:nth-child(4) {
+    animation: floatPattern1 7s ease-in-out infinite;
+    animation-delay: 3s;
+  }
+  .device-mockup:nth-child(5) {
+    animation: floatPattern2 7s ease-in-out infinite;
+    animation-delay: 4s;
+  }
+  .device-mockup:nth-child(6) {
+    animation: floatPattern3 7s ease-in-out infinite;
+    animation-delay: 5s;
+  }
+  .device-mockup:nth-child(7) {
+    animation: floatPattern1 7s ease-in-out infinite;
+    animation-delay: 6s;
+  }
+  .device-mockup:nth-child(8) {
+    animation: floatPattern2 7s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
 }
 
-/* GRID ADJUSTMENTS for better distribution */
-@media (min-width: 1200px) {
+/* RESPONSIVE GRID LAYOUTS */
+@media (min-width: 1400px) {
   .showcase-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .showcase-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
   }
 }
 
 @media (min-width: 900px) and (max-width: 1199px) {
   .showcase-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 599px) {
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 15px;
   }
 }
 
@@ -834,24 +993,128 @@ const relatedProjects = ref([
 .project-desc-container {
   display: flex;
   align-items: center;
-  margin-top: 40px;
-  background-color: wheat;
-  max-width: max-content;
+  gap: 48px;
+  margin: 40px auto 0;
+  padding: 48px 56px;
+  background: wheat;
+  max-width: 1200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
 }
 
+/* Decor nhẹ để đỡ trống */
+.project-desc-container::before {
+  content: "";
+  position: absolute;
+  right: -140px;
+  top: -140px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #fff9, #fff0);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+/* Left (text)*/
 .left-projectDesc {
-  flex: 1;
-  padding: 20px;
+  flex: 1 1 560px;
+  max-width: 680px;
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  padding: 28px 28px;
+}
+
+.left-projectDesc h2 {
+  margin: 0 0 12px;
+  font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.4rem);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.left-projectDesc p {
+  margin: 0;
+  color: #4a5568;
+  font-size: clamp(0.95rem, 0.9rem + 0.2vw, 1.1rem);
+  line-height: 1.7;
 }
 
 .right-projectDesc {
-  padding: 20px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .right-projectDesc img {
-  width: fit-content;
-  height: fit-content;
-  border-radius: 12px;
+  width: min(520px, 38vw);
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  outline: 1px solid #ffffff66;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.right-projectDesc img:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+}
+
+/* 1200px xuống: giảm gap, co ảnh */
+@media (max-width: 1200px) {
+  .project-desc-container {
+    gap: 36px;
+    padding: 40px 44px;
+  }
+  .right-projectDesc img {
+    width: min(580px, 45vw);
+  }
+}
+
+/* 992px xuống: xếp cột, căn giữa */
+@media (max-width: 992px) {
+  .project-desc-container {
+    flex-direction: column;
+    text-align: left; /* để headline vẫn gọn, đổi thành center nếu muốn */
+    gap: 28px;
+    padding: 36px 24px;
+  }
+  .left-projectDesc {
+    width: 100%;
+    padding: 22px 20px;
+  }
+  .right-projectDesc img {
+    width: 100%;
+    max-width: 640px;
+  }
+}
+
+/* 768px xuống: chữ lớn vừa, bo viền nhỏ hơn */
+@media (max-width: 768px) {
+  .project-desc-container {
+    border-radius: 16px;
+  }
+  .left-projectDesc {
+    border-radius: 14px;
+  }
+  .left-projectDesc h2 {
+    font-size: clamp(1.4rem, 3.8vw, 1.9rem);
+  }
+  .left-projectDesc p {
+    font-size: 1rem;
+  }
+}
+
+/* 480px xuống: thu padding, khoảng cách */
+@media (max-width: 480px) {
+  .project-desc-container {
+    padding: 22px 16px;
+    gap: 18px;
+  }
+  .left-projectDesc {
+    padding: 16px;
+  }
 }
 
 /* Featured Projects Section */
@@ -1019,6 +1282,7 @@ const relatedProjects = ref([
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease;
+  border: 1px solid;
 }
 
 .review-card:hover {
@@ -1079,6 +1343,7 @@ const relatedProjects = ref([
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border: 1px solid;
 }
 
 .review-form h3 {
