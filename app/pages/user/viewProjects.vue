@@ -13,8 +13,8 @@ const {
   lazy: true,
 });
 
-const viewProjectDetail = () => {
-  navigateTo("/user/detailProjects");
+const viewProjectDetail = (id: number) => {
+  navigateTo("/user/" + id);
 };
 
 const viewMoreProjects = () => {
@@ -27,7 +27,7 @@ const viewMoreProjects = () => {
     <div class="stats-grid">
       <div class="stat-card card-1">
         <div class="icon">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" >
             <path
               d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
             />
@@ -163,7 +163,12 @@ const viewMoreProjects = () => {
         <p>Không có dự án nào.</p>
       </div>
 
-      <div v-for="project in projects" :key="project.id" class="project-item">
+      <div
+        v-for="project in projects"
+        :key="project.id"
+        class="project-item"
+        @click="viewProjectDetail(project.id)"
+      >
         <img
           :src="
             project.image ||
@@ -412,6 +417,10 @@ const viewMoreProjects = () => {
 }
 
 /* Projects Section */
+
+.project-info {
+  padding: 10px 5px 10px 10px;
+}
 
 .project-list-container {
   display: grid;

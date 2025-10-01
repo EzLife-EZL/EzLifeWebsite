@@ -3,19 +3,66 @@ definePageMeta({
   alias: ["/"], // map URL "/" vào trang này
 });
 
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 
-// Danh sách ảnh (đặt a1.png, a2.png, ... vào /public)
-const images = ["/a1.png", "/a2.png", "/a3.png", "/a4.png", "/a5.png"];
-
+// Tự động tải ảnh từ thư mục showcase
+const images = ref([]);
 const mainIdx = ref(2); // index của box chính (main), mặc định là ảnh giữa
+const autoSlideInterval = ref(null);
+const isHovering = ref(false);
+
+// Tải danh sách ảnh từ showcase
+onMounted(async () => {
+  // Danh sách các file có thể có trong showcase
+  const showcaseFiles = [
+    '/showcase/demo1.gif',
+    '/showcase/demo2.gif', 
+    '/showcase/demo3.webp',
+    '/showcase/demo4.gif',
+    '/showcase/demo5.webp',
+    '/showcase/app1.png',
+    '/showcase/app2.png',
+    '/showcase/web1.gif',
+    '/showcase/web2.gif',
+    '/showcase/mobile1.webp'
+  ];
+  
+  const loadedImages = [];
+  
+  // Kiểm tra file nào tồn tại
+  for (const imagePath of showcaseFiles) {
+    try {
+      const response = await fetch(imagePath, { method: 'HEAD' });
+      if (response.ok) {
+        loadedImages.push(imagePath);
+      }
+    } catch (error) {
+      // File không tồn tại, bỏ qua
+    }
+  }
+  
+  // Nếu không có ảnh nào trong showcase, dùng ảnh mặc định
+  if (loadedImages.length === 0) {
+    images.value = ["/a1.png", "/a2.png", "/a3.png", "/a4.png", "/a5.png"];
+  } else {
+    images.value = loadedImages;
+  }
+  
+  // Bắt đầu auto slide
+  startAutoSlide();
+});
+
+// Dọn dẹp khi component bị hủy
+onUnmounted(() => {
+  stopAutoSlide();
+});
 
 const visibleImages = computed(() => {
   const res = [];
-  const len = images.length;
+  const len = images.value.length;
   for (let k = -2; k <= 2; k++) {
     const idx = (mainIdx.value + k + len) % len;
-    res.push(images[idx]);
+    res.push(images.value[idx]);
   }
   return res;
 });
@@ -26,7 +73,36 @@ function onBoxClick(idx) {
   // idx: 0 1 2 3 4
   // mainIdx dịch sang trái/phải tương ứng
   const delta = idx - 2;
-  mainIdx.value = (mainIdx.value + delta + images.length) % images.length;
+  mainIdx.value = (mainIdx.value + delta + images.value.length) % images.value.length;
+}
+
+// Auto slide functions
+function startAutoSlide() {
+  if (autoSlideInterval.value || isHovering.value) return;
+  
+  autoSlideInterval.value = setInterval(() => {
+    if (!isHovering.value && images.value.length > 0) {
+      mainIdx.value = (mainIdx.value + 1) % images.value.length;
+    }
+  }, 3000); // Chuyển ảnh mỗi 3 giây
+}
+
+function stopAutoSlide() {
+  if (autoSlideInterval.value) {
+    clearInterval(autoSlideInterval.value);
+    autoSlideInterval.value = null;
+  }
+}
+
+// Hover events
+function onMouseEnter() {
+  isHovering.value = true;
+  stopAutoSlide();
+}
+
+function onMouseLeave() {
+  isHovering.value = false;
+  startAutoSlide();
 }
 </script>
 
@@ -44,7 +120,11 @@ function onBoxClick(idx) {
         margin-bottom: 10%;
       "
     >
-      <div class="banner-slider">
+      <div 
+        class="banner-slider"
+        @mouseenter="onMouseEnter"
+        @mouseleave="onMouseLeave"
+      >
         <div
           v-for="(img, idx) in visibleImages"
           :key="idx + '-' + img"
@@ -156,20 +236,6 @@ function onBoxClick(idx) {
 </template>
 
 <style>
-/* :global để không bị scoped chặn */
-:global(html, body, #__nuxt) {
-  height: 100%;
-}
-:global(body) {
-  margin: 0; /* chính cái này xóa viền trắng */
-  background: #f5f6fa; /* tùy chọn */
-}
-:global(*),
-:global(*::before),
-:global(*::after) {
-  box-sizing: border-box;
-}
-
 .banner {
   text-align: center;
   padding: 2rem 1rem 1rem 1rem;
@@ -208,7 +274,16 @@ function onBoxClick(idx) {
   transition: all 0.3s cubic-bezier(0.4, 2, 0.6, 1);
   cursor: pointer;
   overflow: hidden;
+  position: relative;
 }
+
+/* Thêm hiệu ứng hover cho box */
+.banner-slider .box:hover:not(.main) {
+  transform: scale(1.05);
+  opacity: 0.9;
+  box-shadow: 6px 8px 15px #0003;
+}
+
 .banner-slider .boxside {
   width: 180px;
   height: 180px;
@@ -224,12 +299,26 @@ function onBoxClick(idx) {
   overflow: hidden;
 }
 
+/* Hiệu ứng hover cho boxside */
+.banner-slider .boxside:hover {
+  transform: scale(1.1);
+  opacity: 0.6;
+  box-shadow: 6px 8px 15px #0003;
+}
+
 .banner-slider .box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease;
 }
+
+/* Hiệu ứng hover cho ảnh */
+.banner-slider .box:hover img {
+  transform: scale(1.1);
+}
+
 .banner-slider .main {
   width: 600px;
   height: 600px;
@@ -238,6 +327,37 @@ function onBoxClick(idx) {
   z-index: 2;
   box-shadow: 6px 10px 0 #0002;
 }
+
+/* Hiệu ứng hover cho main box */
+.banner-slider .main:hover {
+  transform: scale(1.02);
+  box-shadow: 8px 12px 20px #0004;
+}
+
+/* Thêm indicator nhỏ để hiển thị đang auto slide */
+.banner-slider::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #3ee6c5, #009ee3);
+  border-radius: 2px;
+  animation: slideIndicator 3s linear infinite;
+}
+
+@keyframes slideIndicator {
+  0% { width: 0%; }
+  100% { width: 60px; }
+}
+
+/* Dừng animation khi hover */
+.banner-slider:hover::after {
+  animation-play-state: paused;
+}
+
 .contact-btns {
   display: flex;
   flex-direction: column;
@@ -274,7 +394,16 @@ function onBoxClick(idx) {
   box-shadow: 0 2px 8px #0002;
   text-decoration: none;
   margin-left: 0.5em;
+  transition: all 0.3s ease;
 }
+
+/* Thêm hover cho contact buttons */
+.zalo-btn:hover,
+.messenger-btn:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 4px 15px #0003;
+}
+
 .zalo-btn {
   background: #fff url("/zalo.png") center/70% no-repeat;
 }
@@ -288,7 +417,6 @@ function onBoxClick(idx) {
   justify-content: space-around;
   background: #222222a0;
   backdrop-filter: #2222228b blur(8px);
-
   color: #fff;
   padding: 3% 5% 3% 5%;
   border-radius: 20px;
@@ -382,12 +510,33 @@ function onBoxClick(idx) {
   margin: 0 1rem 1rem 1rem;
   border-radius: 20px;
 }
+
 .benefits h3 {
   text-align: center;
   font-style: oblique;
-  margin: 0 0 18px;
+  margin: 0 0 30px;
   letter-spacing: 0.6px;
   font-weight: 800;
+  position: relative;
+}
+
+/* Thêm hiệu ứng gạch dưới cho title */
+.benefits h3::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #00ffff, #0080ff);
+  border-radius: 2px;
+  animation: titleUnderline 2s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes titleUnderline {
+  to { width: 200px; }
 }
 .benefits h3 span {
   background: linear-gradient(270deg, #ff0000, #00ff1e, #006eff, #7c00a6);
@@ -421,6 +570,29 @@ function onBoxClick(idx) {
     "seo speed features"
     "seo security admin"
     "connect platform uiux";
+}
+
+/* Stagger animation cho các card khi load */
+.benefit-card {
+  animation: cardFadeIn 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.card--seo { animation-delay: 0.1s; }
+.card--speed { animation-delay: 0.2s; }
+.card--features { animation-delay: 0.3s; }
+.card--security { animation-delay: 0.4s; }
+.card--admin { animation-delay: 0.5s; }
+.card--connect { animation-delay: 0.6s; }
+.card--platform { animation-delay: 0.7s; }
+.card--uiux { animation-delay: 0.8s; }
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Map area cho từng card */
@@ -461,21 +633,62 @@ function onBoxClick(idx) {
   display: grid;
   align-content: start;
   gap: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Gradient overlay hiệu ứng */
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #00ffff 0%, #0080ff 50%, #0040ff 100%);
+  transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.benefit-card:hover::before {
+  left: 0;
+}
+
 .benefit-card:hover {
-  transform: translateY(-4px) scaleX(1.02) scaleY(1.02);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
-  background-color: #00ffff;
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+  color: white;
 }
+
+/* Đưa nội dung lên trên overlay */
+.benefit-card > * {
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
 .benefit-card h4 {
   margin: 0;
   font-size: 20px;
   font-weight: 800;
+  transition: all 0.3s ease;
 }
+
+.benefit-card:hover h4 {
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 .benefit-card p {
   margin: 0;
   line-height: 1.45;
   color: #344b5a;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover p {
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* Thẻ SEO cao 2 hàng + icon lớn */
@@ -484,6 +697,13 @@ function onBoxClick(idx) {
   height: 72px;
   object-fit: contain;
   margin-bottom: 6px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.benefit-card:hover .benefit-icon {
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.3)) brightness(1.1);
 }
 
 /* Responsive: tablet 2 cột, mobile 1 cột */
