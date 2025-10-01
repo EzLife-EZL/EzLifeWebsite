@@ -15,7 +15,7 @@ const isMenuOpen = ref(false);
       <li><NuxtLink to="/user/home">Giới thiệu</NuxtLink></li>
       <li><NuxtLink to="/user/viewServices">Dịch vụ</NuxtLink></li>
       <li><NuxtLink to="/user/viewProjects">Dự án</NuxtLink></li>
-      <li><NuxtLink to="/">Chính sách</NuxtLink></li>
+      <li><NuxtLink to="/user/policy">Chính sách</NuxtLink></li>
       <li><NuxtLink to="/admin/login"> Admin</NuxtLink></li>
 
       <li>

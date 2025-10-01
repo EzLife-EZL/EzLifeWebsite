@@ -23,4 +23,9 @@ export default defineNuxtConfig({
       ],
     },
   },
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.BASE_URL || 'http://localhost:4000'
+    }
+  }
 });

@@ -4,6 +4,15 @@ definePageMeta({
 });
 
 import { ref, computed, onMounted, onUnmounted } from "vue";
+import { useBook, showApiAddress } from '~/composable/user/book'
+
+const { book, loading, load } = useBook()
+const apiAddress = showApiAddress()
+
+// Tự động tải khi vào page
+onMounted(() => {
+  load()
+})
 
 // Tự động tải ảnh từ thư mục showcase
 const images = ref([]);
@@ -145,6 +154,25 @@ function onMouseLeave() {
       <a href="#" class="messenger-btn"></a>
     </div>
   </section>
+
+  <div>
+    <h1>Danh sách sách</h1>
+
+    <button @click="load" :disabled="loading">
+      {{ loading ? "Đang tải..." : "Tải sách" }}
+    </button>
+
+    <!-- Hiển thị địa chỉ API -->
+    <p>API: {{ apiAddress }}</p>
+
+    <!-- Hiển thị danh sách book -->
+    <ul>
+      <li v-for="(item, index) in book" :key="index">
+        {{ item.title }}
+      </li>
+    </ul>
+  </div>
+
 
   <!-- Lý do chọn -->
   <section class="why">
@@ -491,13 +519,25 @@ function onMouseLeave() {
 }
 
 /* Lệch và xoay nhẹ để thấy overlap */
+.card--right {
+  transform: rotate(8deg) translateX(60px);
+  z-index: 0;
+}
+
 .card--left {
-  transform: rotate(-8deg) translateX(-30px);
+  transform: rotate(-8deg) translateX(-60px);
   z-index: 1;
 }
 
-.card--right {
-  transform: rotate(8deg) translateX(30px);
+/* Hover để nổi lên */
+.card--left:hover {
+  transform: rotate(0deg) translateX(-60px) translateY(-10px) scale(1.5);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+.card--right:hover {
+  transform: rotate(0deg) translateX(60px) translateY(-10px) scale(1.5);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
   z-index: 2;
 }
 
